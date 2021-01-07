@@ -7,7 +7,7 @@
 
 <h2 align=center>NutellaAgent: Hyperparameter Optimization and Visualization of ML Metrics</h2>
 
-[NutellaAgent](https://github.com/NutellaCoder/NutellaML)는 Nutella web 서비스를 위한 파이썬 라이브러리이다. 이 라이브러리를 통해 사용자는 다양한 머신러닝 실험 지표들을 시각화 할 수 있으며, 자신의 모델에 최적화된 하이퍼파라미터를 구할 수 있다. 또한, 하이퍼파라미터를 최적화한 결과와 각 파라미터들이 결과에 얼마나 중요한 역할을 하는지 또한 볼 수 있다. 이 모든 것은 [Netella Web](http://ec2-54-180-180-142.ap-northeast-2.compute.amazonaws.com:3000/)에서 손쉽게 확인할 수 있다.
+[NutellaAgent](https://github.com/NutellaCoder/NutellaML)는 Nutella web 서비스를 위한 파이썬 라이브러리이다. 이 라이브러리를 통해 사용자는 다양한 머신러닝 실험 지표들을 시각화 할 수 있으며, 자신의 모델에 최적화된 하이퍼파라미터를 구할 수 있다. 또한, 하이퍼파라미터를 최적화한 결과와 각 파라미터들이 결과에 얼마나 중요한 역할을 하는지 또한 볼 수 있다. 이 모든 것은 Netella Web에서 손쉽게 확인할 수 있다.
 
 
 ## Installation
@@ -18,7 +18,7 @@ $ pip install nutellaAgent
 
 ## Visualization
 
-[Netella Web](http://ec2-54-180-180-142.ap-northeast-2.compute.amazonaws.com:3000/)에서 로그인을 하고 프로젝트를 생성한 뒤에 어디서든 자신의 모델을 실행시켜 원하는 지표를 시각화할 수 있다.
+Netella Web에서 로그인을 하고 프로젝트를 생성한 뒤에 어디서든 자신의 모델을 실행시켜 원하는 지표를 시각화할 수 있다.
 
 ```python
 import nutellaAgent
@@ -39,7 +39,7 @@ first_model.log(accuracy = acc, loss = loss)
 
 ## Hyperparameter Optimization
 
-[Netella Web](http://ec2-54-180-180-142.ap-northeast-2.compute.amazonaws.com:3000/)에서 HPO 프로젝트를 생성한 뒤에 최적화된 하이퍼파라미터 값을 얻을 수 있으며, 웹 페이지를 통해 각 하이퍼파라미터들이 output에 영향을 미치는 정도를 한눈에 파악할 수 있다.
+Netella Web에서 HPO 프로젝트를 생성한 뒤에 최적화된 하이퍼파라미터 값을 얻을 수 있으며, 웹 페이지를 통해 각 하이퍼파라미터들이 output에 영향을 미치는 정도를 한눈에 파악할 수 있다.
 
 ```python
 from nutellaAgent import hpo, nu_fmin
