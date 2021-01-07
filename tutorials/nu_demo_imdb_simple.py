@@ -22,17 +22,9 @@ y_train = np.asarray(train_labels).astype('float32')
 y_test = np.asarray(test_labels).astype('float32')
 
 from nutellaAgent import hpo
-from nutellaAgent import nu_fmin
+from nutellaAgent import nu_simple_fmin
 from sklearn.metrics import roc_auc_score
 import sys
-
-space = {'units': hpo.hp.uniform('units', 64, 1024),
-         'dropout': hpo.hp.uniform('dropout', .25,.75),
-         'activation': 'relu',
-         'optimizer': hpo.hp.choice('optimizer', ['rmsprop', 'adadelta', 'adam']),
-         'epochs' : 1,
-         'batch_size' : hpo.hp.choice('batch_size', [128, 512])
-}
 
 def objective(params):
 
@@ -41,10 +33,10 @@ def objective(params):
   from keras import layers
 
   model = models.Sequential()
-  model.add(layers.Dense(units=params['units'], activation=params['activation'], input_shape=(10000,)))
+  model.add(layers.Dense(units=params['units'], activation='relu', input_shape=(10000,)))
   model.add(layers.Dropout(params['dropout']))
   
-  model.add(layers.Dense(units=params['units'], activation=params['activation']))
+  model.add(layers.Dense(units=params['units'], activation='relu'))
   model.add(layers.Dropout(params['dropout']))
 
   model.add(layers.Dense(1, activation='sigmoid'))
@@ -56,14 +48,14 @@ def objective(params):
 
   # data 설정
   x_val = x_train[:2]
-  partial_x_train = x_train[2:3]
+  partial_x_train = x_train[2:4]
   y_val = y_train[:2]
-  partial_y_train = y_train[2:3]
+  partial_y_train = y_train[2:4]
 
   # 학습
   history = model.fit(partial_x_train,
                       partial_y_train,
-                      epochs=params['epochs'],
+                      epochs=1,
                       batch_size=params['batch_size'],
                       validation_data=(x_val, y_val))
   
@@ -71,8 +63,7 @@ def objective(params):
 
   return {'loss': -acc, 'status': hpo.STATUS_OK}
 
-trials=hpo.Trials()
-best = nu_fmin("hello", objective, space, algo=hpo.tpe.suggest, max_evals=50, trials=trials)
+best, trials = nu_simple_fmin("qwer", objective)
 print("====================hps====================")
 print(trials.vals)
 print("====================best===================")

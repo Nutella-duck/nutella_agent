@@ -15,4 +15,5 @@ from .nu_sdk import Nutella
 
 from . import nu_hpo as hpo
 from .nu_hpo import nu_fmin
+from .nu_hpo import nu_simple_fmin
 # from . import nu_importance as imp

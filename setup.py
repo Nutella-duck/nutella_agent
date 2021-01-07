@@ -5,7 +5,7 @@ with open('requirements.txt') as requirements_file:
 
 setup(
     name                = 'nutellaAgent',
-    version             = '0.1.20',
+    version             = '0.2.0',
     description         = 'for nutella service',
     author              = 'songpie',
     author_email        = 'songmi.ohh@gmail.com',
