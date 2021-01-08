@@ -15,8 +15,8 @@ model = Sequential()
 model.add(layers.InputLayer(input_shape=(28, 28, 1)))
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dense(16, activation='relu'))
-model.add(layers.Dense(10, activation='softmax'))
+model.add(layers.Dense(32, activation='relu'))
+model.add(layers.Dense(1, activation='softmax'))
 
 model.compile(
     optimizer='rmsprop',
@@ -28,18 +28,19 @@ model.compile(
 history = model.fit(
     reshape_x_train,
     y_train,
-    batch_size=256,
-    epochs=1,
+    batch_size=128,
+    epochs=50,
     validation_split=.1
 )
 
 # 원하는 지표 생성
 acc = history.history['acc']
+loss = history.history['loss']
 
 import nutellaAgent
 
 nnn = nutellaAgent.Nutella()
-nnn.init("system_run1", "111", 0)
-nnn.log(accuracy = acc)
+nnn.init("test_run1", "", 0)
+nnn.log(accuracy = acc, loss = loss)
 
 

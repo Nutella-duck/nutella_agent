@@ -52,7 +52,7 @@ class Nutella(threading.Thread):
     def hardware_system_value(self):
         p = psutil.Process()
 
-        self.system_info["cpu"] = min(65535, int(((psutil.cpu_percent(interval=None) / 100) / psutil.cpu_count(False)) * 65535))
-        self.system_info["memory"] = min(65535, int((p.memory_percent() / 100) * 65535))
-        self.system_info["net"] = psutil.net_io_counters()
-        self.system_info["disk"] = psutil.disk_io_counters()
+        self.system_info["cpu"] = p.cpu_percent(interval=0.1)
+        self.system_info["memory"] = p.memory_info()[0] / 2.**20   #memory usages KB 
+        # self.system_info["net"] = psutil.net_io_counters()
+        # self.system_info["disk"] = psutil.disk_io_counters()

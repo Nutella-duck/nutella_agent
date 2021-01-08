@@ -25,12 +25,12 @@ from hyperopt import exceptions
 # -- Import built-in optimization algorithms
 from hyperopt import rand
 from hyperopt import tpe
-from hyperopt import atpe
+# from hyperopt import atpe
 from hyperopt import mix
 from hyperopt import anneal
 
 # -- spark extension
-from hyperopt.spark import SparkTrials
+# from hyperopt.spark import SparkTrials
 
 from hyperopt.fmin import fmin #as nu_fmin
 from hyperopt.fmin import fmin_pass_expr_memo_ctrl
